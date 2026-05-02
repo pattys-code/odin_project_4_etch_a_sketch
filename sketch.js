@@ -1,8 +1,10 @@
 const grid = document.querySelector('.grid');
 const resetBtn = document.querySelector('.reset');
 const rainbowBtn = document.querySelector('.rainbow');
+const finishBtn = document.querySelector('.finish');
+const menu = document.querySelector('.menu-container');
 let trigger = false;
-let rainbowActive = true;
+let rainbowActive = false;
 const sizeSlider = document.querySelector('#size');
 
 function getRandomColor () {
@@ -75,7 +77,6 @@ resetBtn.addEventListener('click', resetGrid);
 //rainbow mode
 rainbowBtn.addEventListener('click', () => {
     rainbowActive = !rainbowActive;
-    console.log(rainbowActive);
     rainbowBtn.innerHTML= rainbowActive ? 'deactivate rainbow mode':'activate rainbow mode';
     setPixelListeners();
 })
@@ -85,3 +86,16 @@ sizeSlider.addEventListener('input',()=> {
     changeSizeGrid();
 });
 
+finishBtn.addEventListener('click', () => {
+    menu.innerHTML = '';
+    const finishMessage = document.createElement('div');
+    const startAgainBtn = document.createElement('button');
+    finishMessage.textContent = 'Well done! Wanna draw again?';
+    startAgainBtn.textContent = 'Yes';
+    finishMessage.classList.add('pad-text');
+    menu.appendChild(finishMessage);
+    menu.appendChild(startAgainBtn);
+    startAgainBtn.addEventListener('click', () => {
+        location.reload();
+    })
+})
