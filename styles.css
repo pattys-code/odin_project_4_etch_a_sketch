@@ -1,8 +1,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+:root {
+  --dark-purple: rgb(63, 28, 55);
+  --light-pink:rgb(230, 213, 222);
+  --medium-pink: rgb(223, 189, 207);
+}
+
 html * {
   font-family: 'Chewy', cursive;
-  background-color: rgb(223, 189, 207);
+  background-color: var(--medium-pink);
   color: rgb(63, 28, 55);
   letter-spacing:0.1em;
   font-weight: 100;
@@ -11,25 +18,40 @@ html * {
 h1 {
     text-align: center;
     padding: 20px;
+    border: 4px solid var(--dark-purple);
+    border-radius: 15px;
+    margin: 20 auto;
+    max-width: 1100px;
+}
+
+h2 {
+    background-color: inherit;
+    font-size: 26px;
+    text-decoration: underline;
 }
 
 .pad {
     display:flex;
-    background-color: rgb(230, 213, 222);
-    padding: 40px;
+    background-color: var(--light-pink);
+    padding: 40px 20px;
     border-radius: 20px;
     justify-content: space-around;
-    margin: 0px 100px;
+    margin: 0 auto;
+    max-width: 1100px;
+    border: 4px solid var(--dark-purple);
 }
 
 .menu {
     background-color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px
 }
 
 .grid{
     display: flex;
     flex-direction: column;
-    border: 2px solid rgb(63, 28, 55);
+    border: 2px solid var(--dark-purple);
     justify-content: center;
     background-color: inherit;
     flex: 0 1 600px;
@@ -42,7 +64,7 @@ h1 {
 }
 
 .pixel {
-    border: 1px solid rgb(63, 28, 55);
+    border: 1px solid var(--dark-purple);
     flex: 1 1 100px;
     aspect-ratio: 1;
     background-color: inherit;
@@ -51,24 +73,84 @@ h1 {
 .slider {
     padding-bottom: 20px;
     background-color: inherit;
+    border: 2px solid var(--dark-purple);
+    border-radius: 5px;
+    padding: 5px;
 }
 
+.reset,.finish, .rainbow{
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* For Chrome, Safari, Edge, and modern browsers */
+input[type='range'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  overflow: hidden;
+  width: 150px;
+  background-color: transparent;
+}
+
+/* Track styling for Chrome, Safari, Edge */
+input[type='range']::-webkit-slider-runnable-track {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 12px;
+  border: 2px solid var(--dark-purple);
+}
+
+/* Track styling for Firefox */
+input[type='range']::-moz-range-track {
+  appearance: none;
+  -moz-appearance: none;
+  height: 12px;
+  border: 2px solid var(--dark-purple);
+}
+
+/* Thumb styling for Chrome, Safari, Edge */
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 5px;
+  width: 5px;
+  cursor: ew-resize;
+  background: rgb(63, 28, 55);
+  box-shadow: -80px 0 0 80px var(--dark-purple);
+}
+
+/* Thumb styling for Firefox */
+input[type='range']::-moz-range-thumb {
+  appearance: none;
+  -moz-appearance: none;
+  height: 5px;
+  width: 5px;
+  cursor: ew-resize;
+  background: var(--dark-purple);
+  box-shadow: -80px 0 0 80px var(--dark-purple);
+}
+
+
 /*Chrome*/
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {
     input[type='range'] {
+      appearance: none; 
+      -webkit-appearance: none;
       overflow: hidden;
       width: 150px;
-      -webkit-appearance: none;
       background-color: transparent;
     }
     
     input[type='range']::-webkit-slider-runnable-track {
+        appearance: none;
       -webkit-appearance: none;
       height: 12px;
       border: 2px solid rgb(63, 28, 55);
     }
     
     input[type='range']::-webkit-slider-thumb {
+        appearance: none;
       -webkit-appearance: none;
       height: 5px;
       width: 5px;
@@ -77,4 +159,4 @@ h1 {
       box-shadow: -80px 0 0 80px rgb(63, 28, 55);
     }
 
-}
+}*/

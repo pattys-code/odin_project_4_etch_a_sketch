@@ -7,16 +7,19 @@
     <title>Etch a Sketch</title>
 </head>
 <body>
-    <h1>Etch a Sketch</h1>
+    <h1>Etch-a-Sketch</h1>
 
     <div class="pad">
         <div class="menu">
+            <h2> Menu: </h2>
             <div class="slider menu">
                 <label class="menu" for="size">grid size</label>
                 <input type="range" required id="size" min="1" max="64" step="1" value="16">
                 <span class="menu" id="size-text">16</span>
             </div>
+            <button class="rainbow">activate rainbow mode</button>
             <button class="reset">clear grid</button>
+            <button class="finish">finish drawing</button>
         </div>
         <div class="grid"></div>
     </div>

@@ -1,21 +1,34 @@
 const grid = document.querySelector('.grid');
 const resetBtn = document.querySelector('.reset');
+const rainbowBtn = document.querySelector('.rainbow');
 let trigger = false;
+let rainbowActive = true;
 const sizeSlider = document.querySelector('#size');
 
-
+function getRandomColor () {
+    const colorArray = [];
+    for (let idx = 0; idx < 3; idx++) {
+         let randomNum = Math.floor(Math.random()*256);
+        colorArray.push(randomNum);
+    }
+   return 'rgb('+colorArray.join(',')+')';
+}
 
 function setPixelListeners() {
     const pixels = document.querySelectorAll('.pixel');
     pixels.forEach(pixel => {
+        let color = 'rgb(107, 80, 101)';
+        if (rainbowActive===true) {
+            color = getRandomColor();
+        }
         pixel.addEventListener('mouseenter', (event) => {
             event.preventDefault();
             if (trigger) {
-                pixel.style.background = 'rgb(107, 80, 101)';
+                pixel.style.background = color; 
             }
         });
         pixel.addEventListener('mousedown', (event) => {
-            pixel.style.background = 'rgb(107, 80, 101)';
+            pixel.style.background = color; 
         });
     });
 }
@@ -42,7 +55,7 @@ function changeSizeGrid () {
     }
     setPixelListeners();
     const sizeText = document.querySelector('#size-text');
-    sizeText.innerHTML= size; 
+    sizeText.innerHTML= size+'x'+size; 
 }
 
 // initialize
@@ -59,9 +72,16 @@ document.addEventListener('mouseup', function(){
 // reset color
 resetBtn.addEventListener('click', resetGrid);
 
+//rainbow mode
+rainbowBtn.addEventListener('click', () => {
+    rainbowActive = !rainbowActive;
+    console.log(rainbowActive);
+    rainbowBtn.innerHTML= rainbowActive ? 'deactivate rainbow mode':'activate rainbow mode';
+    setPixelListeners();
+})
+
 // change size
 sizeSlider.addEventListener('input',()=> {
     changeSizeGrid();
 });
-
 
